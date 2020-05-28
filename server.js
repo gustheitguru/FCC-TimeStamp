@@ -15,8 +15,9 @@ app.get("/api/timestamp/:date_string?", (req, res, next) => {
 	let obj;
 	if(typeof num === 'undefined'){
 		//return the current day	
-		var today = new Date();
-		var newDate = Date.parse(today);	
+		var today = new Date().toUTCString();
+		var newDate = Date.parse(today);
+
 		obj = {"unix": newDate, "utc": today};
 
 	} else if (typeof num === 'string'){
